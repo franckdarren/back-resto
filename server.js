@@ -1,20 +1,20 @@
 import express from 'express';
+import dotenv from "dotenv";
 
+
+
+dotenv.config();
+
+const port = process.env.Port || 3500;
 const app = express();
-const port = 3000;
+
+app.use(express.json());
 
 
-import routeMenu from './routes/menu.js';
-
-import routeReservation from './routes/reservation.js';
 
 
-// Définir une route
-app.use('/api', routeMenu)
-app.use('/api', routeReservation)
-
-
-// Démarrer le serveur
 app.listen(port, () => {
-  console.log(`je fonctionne bien`);
+  console.log(`le serveur écoute sur le port ${port}.`);
 });
+
+export default app;
