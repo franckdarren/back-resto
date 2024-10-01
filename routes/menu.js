@@ -1,4 +1,3 @@
-// routes/menu.js
 import express from 'express';
 import { getAllMenus, getMenuById, createMenu, updateMenu, deleteMenu} from '../controllers/menuController.js';
 

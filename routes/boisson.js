@@ -1,4 +1,3 @@
-// routes/boisson.js
 import express from 'express';
 import { getAllBoissons, getBoissonById, createBoisson, updateBoisson, deleteBoisson } from '../controllers/boissonController.js';
 

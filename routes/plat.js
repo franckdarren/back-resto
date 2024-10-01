@@ -1,4 +1,3 @@
-// routes/plat.js
 import express from 'express';
 import {getAllPlats, getPlatById, createPlat, updatePlat, deletePlat } from '../controllers/platController.js';
 

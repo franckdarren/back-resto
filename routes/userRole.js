@@ -1,4 +1,3 @@
-// routes/userRole.js
 import express from 'express';
 import { getAllUserRoles, updatUserRole, deleteUserRolen} from '../controllers/RoleController.js';
 

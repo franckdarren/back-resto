@@ -1,4 +1,3 @@
-// routes/role.js
 import express from 'express';
 import {getAllRoles, getRoleById, createRole, updatRrole, deleteRole } from '../controllers/roleController.js';
 
