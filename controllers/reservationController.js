@@ -1,34 +1,43 @@
+import { Reservation } from '../models/reservationModel.js'; 
 
 
-export const Reservation = async (req, res) => {
-    try {
-        const reservationId = await creerReservation(req.body);
-        res.status(201).json({ message: "Réservation créée avec succès", reservationId });
-    } catch (erreur) {
-        console.error("Erreur lors de la création de la réservation :", erreur); // Ajout d'un log
-        res.status(500).json({ message: `Erreur de la création de l'ajout d'une réservation`, erreur });
-    }
-}
+export const getAllReservations = (req, res) => {
+  const reservations = [];  
+  res.status(200).json(reservations);
+};
 
-export const ReservationAll = async (req, res) => {
-    try {
-        const reservations = await recupererReservations();
-        res.status(200).json(reservations);
-    } catch (erreur) {
-        console.error("Erreur lors de la récupération de toutes les réservations :", erreur); // Ajout d'un log
-        res.status(500).json({ message: `Erreur lors de la récupération de toutes les réservations`, erreur });
-    }
-}
 
-export const ReservationById = async (req, res) => {
-    try {
-        const reservation = await recupererReservationsId(req.params.id);
-        if (!reservation) {
-            return res.status(404).json({ message: "Réservation introuvable" });
-        }
-        res.status(200).json(reservation);
-    } catch (erreur) {
-        console.error("Erreur lors de la récupération de la réservation :", erreur); // Ajout d'un log
-        res.status(500).json({ message: `Erreur lors de la récupération de la réservation avec l'id ${req.params.id}`, erreur });
-    }
-}
+export const createReservation = (req, res) => {
+  const { nomClient, idPlat, dateTime, nombrePersonne, email } = req.body;
+  const newReservation = new Reservation(Date.now(), nomClient, idPlat, dateTime, nombrePersonne, email);
+  
+
+  res.status(201).json(newReservation);
+};
+
+
+export const updateReservation = (req, res) => {
+  const { idReservation } = req.params;
+  const { nomClient, idPlat, dateTime, nombrePersonne, email } = req.body;
+
+  const reservation = {}; 
+
+  if (!reservation) {
+    return res.status(404).json({ message: 'Réservation non trouvée' });
+  }
+
+  reservation.nomClient = nomClient || reservation.nomClient;
+  reservation.idPlat = idPlat || reservation.idPlat;
+  reservation.dateTime = dateTime || reservation.dateTime;
+  reservation.nombrePersonne = nombrePersonne || reservation.nombrePersonne;
+  reservation.email = email || reservation.email;
+
+  res.status(200).json(reservation);
+};
+
+
+export const deleteReservation = (req, res) => {
+  const { idReservation } = req.params;
+
+  res.status(200).json({ message: 'Réservation supprimée' });
+};
