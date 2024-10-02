@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 import express from 'express';
 import dotenv from "dotenv";
 
@@ -8,7 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const port = process.env.Port || 3500;
+const port = process.env.Port || 3000;
 const app = express();
 
 app.use(express.json());
@@ -21,4 +19,4 @@ app.listen(port, () => {
 });
 
 export default app;
->>>>>>> origin/steeve
+
