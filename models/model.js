@@ -72,6 +72,6 @@ class Reservation {
     }
   }
 
-export default module;
+export default module; 
   
   
